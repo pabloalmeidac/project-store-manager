@@ -1,6 +1,6 @@
 const connection = require('./connection');
 
-const list = async () => {
+const getAll = async () => {
   const sql = `SELECT 
       sp.sale_id, s.date, sp.product_id, sp.quantity
     FROM 
@@ -31,6 +31,6 @@ const getById = async (id) => {
 };
 
 module.exports = {
-  list,
+  getAll,
   getById,
 };

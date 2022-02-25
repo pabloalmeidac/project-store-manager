@@ -11,10 +11,10 @@ app.get('/', (_request, response) => {
   response.send();
 });
 
-app.get('/products', productsControllers.list);
+app.get('/products', productsControllers.getAll);
 app.get('/products/:id', productsControllers.getById);
 
-app.get('/sales', salesControllers.list);
+app.get('/sales', salesControllers.getAll);
 app.get('/sales/:id', salesControllers.getById);
 
 app.listen(process.env.PORT, () => {

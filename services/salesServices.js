@@ -9,8 +9,8 @@ const serialize = (sales) => {
   return { date, productId, quantity };
 };
 
-const list = async () => {
-  const sales = await salesModels.list();
+const getAll = async () => {
+  const sales = await salesModels.getAll();
 
   return sales.map(serialize);
 };
@@ -25,6 +25,6 @@ const getById = async (id) => {
 };
 
 module.exports = {
-  list,
+  getAll,
   getById,
 };

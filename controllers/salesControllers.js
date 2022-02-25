@@ -1,8 +1,8 @@
 const salesServices = require('../services/salesServices');
 
-const list = async (_req, res, next) => {
+const getAll = async (_req, res, next) => {
   try {
-    const sales = await salesServices.list();
+    const sales = await salesServices.getAll();
   
     if (sales.length === 0 || sales === undefined) {
       return res.status(404).json({ message: 'Sale not found' });
@@ -27,6 +27,6 @@ const getById = async (req, res, _next) => {
 };
 
 module.exports = {
-  list,
+  getAll,
   getById,
 };

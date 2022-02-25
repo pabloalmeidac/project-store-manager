@@ -1,8 +1,8 @@
 const productsServices = require('../services/productsServices');
 
-const list = async (_req, res, next) => {
+const getAll = async (_req, res, next) => {
   try {
-    const products = await productsServices.list();
+    const products = await productsServices.getAll();
   
     if (products.length === 0) res.status(404).json({ message: 'Product not found' });
     
@@ -27,7 +27,7 @@ const getById = async (req, res, next) => {
 };
 
 module.exports = {
-  list,
+  getAll,
   getById,
 };
 
