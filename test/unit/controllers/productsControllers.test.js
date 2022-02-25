@@ -1,5 +1,5 @@
-const sinon = require('sinon');
 const { expect } = require('chai');
+const sinon = require('sinon');
 const productsControllers = require('../../../controllers/productsControllers');
 const productsServices = require('../../../services/productsServices');
 const data = require('../data');
@@ -52,7 +52,7 @@ describe('Listagem Controllers', () => {
     it('Deve responder um json com o(s) objeto(s)', async () => {
       await productsControllers.list(request, response, next);
       
-      expect(response.json.calledWith('array')).to.be.equal(true);
+      expect(response.json).to.be.equal(data);
     });
   })
 });

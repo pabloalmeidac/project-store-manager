@@ -12,8 +12,23 @@ const list = async (_req, res, next) => {
   }
 };
 
+const getById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    
+    const product = await productsServices.getById(id);
+  
+    if (product === undefined) res.status(404).json({ message: 'Product not found' });
+    
+    return res.status(200).json(product);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   list,
+  getById,
 };
 
 // GET /products deve responder code 200 com o array de objetos
