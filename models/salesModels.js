@@ -22,12 +22,12 @@ const getById = async (id) => {
   INNER JOIN 
     StoreManager.sales AS s ON sp.sale_id = s.id
   WHERE 
-    s.id = 1
+    s.id = ?
   ORDER BY 
     sp.product_id;`;
   const [result] = await connection.execute(sql, [id]);
   
-  return result[0];
+  return result;
 };
 
 module.exports = {
