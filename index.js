@@ -20,6 +20,8 @@ app.get('/sales/:id', salesControllers.getById);
 app.post('/products', productsControllers.create);
 app.post('/sales', salesControllers.create);
 
+app.put('/products/:id', productsControllers.update);
+
 app.listen(process.env.PORT, () => {
   console.log(`Escutando na porta ${process.env.PORT}`);
 });

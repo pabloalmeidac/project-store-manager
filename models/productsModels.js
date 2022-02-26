@@ -15,10 +15,10 @@ const getById = async (id) => {
 
 const create = async ({ name, quantity }) => {
   const sql = `
-  INSERT INTO 
-    StoreManager.products (name, quantity) 
-  VALUES 
-    (?, ?);`;
+    INSERT INTO 
+      StoreManager.products (name, quantity) 
+    VALUES 
+      (?, ?);`;
   const [{ insertId }] = await connection.execute(sql, [name, quantity]);
   
   return {
@@ -28,8 +28,23 @@ const create = async ({ name, quantity }) => {
   };
 };
 
+const update = async (id, { name, quantity }) => {
+  console.log('ta no models');
+  const sql = `
+    UPDATE 
+      products
+    SET
+      name = ?, quantity = ?
+    WHERE 
+      id = ?;`;
+  await connection.execute(sql, [name, quantity, id]);
+
+  return getById(id);
+};
+
 module.exports = {
   getAll,
   getById,
   create,
+  update,
 };

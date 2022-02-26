@@ -24,8 +24,14 @@ const create = async ({ name, quantity }) => {
   if (product.name === name) return undefined;
 };
 
+const update = async (id, { name, quantity }) => {
+  console.log('ta no services');
+  const productUpdated = await productsModels.update(id, { name, quantity });
+  return productUpdated;
+};
 module.exports = {
   getAll,
   getById,
   create,
+  update,
 };
