@@ -1,4 +1,5 @@
 const productsServices = require('../services/productsServices');
+const productsSchema = require('../schemas/productsSchema');
 
 const getAll = async (_req, res, next) => {
   try {
@@ -26,9 +27,23 @@ const getById = async (req, res, next) => {
   }
 };
 
+const create = async (req, res, _next) => {
+    const { error } = productsSchema.isValid(req.body);
+    const { name, quantity } = req.body;
+    
+    if (error) {
+      // split error do brabo NASC
+      const [code, message] = error.message.split('|');
+      return res.status(code).json({ message });
+    } 
+    
+    return console.log(name, quantity);
+  };
+
 module.exports = {
   getAll,
   getById,
+  create,
 };
 
 // GET /products deve responder code 200 com o array de objetos

@@ -12,4 +12,5 @@ module.exports = {
       quantity: 20
     }
   ],
+  inserted: { id: 1, name: "produto A", quantity: 10 }
 };
