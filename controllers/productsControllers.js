@@ -37,7 +37,11 @@ const create = async (req, res, _next) => {
       return res.status(code).json({ message });
     } 
     
-    return console.log(name, quantity);
+    const newProduct = await productsServices.create({ name, quantity });
+    
+    if (!newProduct) return res.status(409).json({ message: 'Product already exists' });
+    
+    return res.status(201).json(newProduct);
   };
 
 module.exports = {
