@@ -18,17 +18,17 @@ const create = async ({ name, quantity }) => {
 
   if (!product) {
     const newProduct = await productsModels.create({ name, quantity });
-    
     return newProduct;
   }
+  
   if (product.name === name) return undefined;
 };
 
 const update = async (id, { name, quantity }) => {
-  console.log('ta no services');
   const productUpdated = await productsModels.update(id, { name, quantity });
   return productUpdated;
 };
+
 module.exports = {
   getAll,
   getById,

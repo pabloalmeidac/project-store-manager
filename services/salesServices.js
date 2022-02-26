@@ -5,7 +5,7 @@ const serialize = (sales) => {
   const { sale_id: saleId, date, product_id: productId, quantity } = sales;
   
   if (saleId) return { saleId, date, productId, quantity };
-  console.log(sales);
+  
   return { date, productId, quantity };
 };
 

@@ -9,8 +9,8 @@ const getAll = async (_req, res, next) => {
     
     return res.status(200).json(products);
   } catch (error) {
-    next(error);
-  }
+      next(error);
+    }
 };
 
 const getById = async (req, res, next) => {
@@ -23,11 +23,12 @@ const getById = async (req, res, next) => {
     
     return res.status(200).json(product);
   } catch (error) {
-    next(error);
-  }
+      next(error);
+    }
 };
 
-const create = async (req, res, _next) => {
+const create = async (req, res, next) => {
+  try {
     const { error } = productsSchema.isValid(req.body);
     const { name, quantity } = req.body;
     
@@ -42,25 +43,30 @@ const create = async (req, res, _next) => {
     if (!newProduct) return res.status(409).json({ message: 'Product already exists' });
     
     return res.status(201).json(newProduct);
+  } catch (error) {
+      next(error);
+    }
   };
 
-const update = async (req, res, _next) => {
+const update = async (req, res, next) => {
+  try {
     const { error } = productsSchema.isValid(req.body);
     const { id } = req.params;
     const { name, quantity } = req.body;
     
     if (error) {
       // split error do brabo NASC
-      
       const [code, message] = error.message.split('|');
       return res.status(code).json({ message });
     } 
-    console.log(id, name, quantity);
     const productUpdated = await productsServices.update(id, { name, quantity });
   
     if (!productUpdated) res.status(404).json({ message: 'Product not found' });
     
     return res.status(200).json(productUpdated);
+  } catch (error) {
+      next(error);
+    }
 };
 
 module.exports = {
@@ -69,5 +75,3 @@ module.exports = {
   create,
   update,
 };
-
-// GET /products deve responder code 200 com o array de objetos
