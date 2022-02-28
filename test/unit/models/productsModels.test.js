@@ -42,7 +42,7 @@ describe('Models', () => {
       });
     });
 
-    describe.only('#create', () => {
+    describe('#create', () => {
       describe('Quando criar os dados na tabela', () => {
         before(() => {
           sinon.stub(connection, 'execute').resolves([{ insertId: productsMock.inserted.id }]);
