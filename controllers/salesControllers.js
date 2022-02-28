@@ -1,5 +1,4 @@
 const salesServices = require('../services/salesServices');
-const salesSchema = require('../schemas/salesSchema');
 
 const getAll = async (_req, res, next) => {
   try {
@@ -29,21 +28,9 @@ const getById = async (req, res, next) => {
     }
 };
 
-const create = async (req, res, next) => {
-  try {
-    const { error } = salesSchema.isValid(req.body);
-    const { productId, quantity } = req.body;
-    
-    if (error) {
-      // split error do brabo NASC
-      const [code, message] = error.message.split('|');
-      return res.status(code).json({ message });
-    } 
-    return console.log(productId, quantity);
-  } catch (error) {
-      next(error);
-    }
-};
+const create = (_req, _res, _next) => console.log('oi');
+
+const update = (_req, _res, _next) => console.log('oi');
 
 const exclude = async (req, res, next) => {
   try {
@@ -63,4 +50,5 @@ module.exports = {
   getById,
   create,
   exclude,
+  update,
 };

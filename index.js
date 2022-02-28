@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const productsControllers = require('./controllers/productsControllers');
 const salesControllers = require('./controllers/salesControllers');
+const validateSale = require('./middlewares/validateSale');
 
 const app = express();
 app.use(express.json());
@@ -18,9 +19,10 @@ app.get('/sales', salesControllers.getAll);
 app.get('/sales/:id', salesControllers.getById);
 
 app.post('/products', productsControllers.create);
-app.post('/sales', salesControllers.create);
+app.post('/sales', validateSale, salesControllers.create);
 
 app.put('/products/:id', productsControllers.update);
+app.put('/sales/:id', validateSale, salesControllers.update);
 
 app.delete('/products/:id', productsControllers.exclude);
 app.delete('/sales/:id', salesControllers.exclude);
