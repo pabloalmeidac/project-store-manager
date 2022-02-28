@@ -29,7 +29,6 @@ const create = async ({ name, quantity }) => {
 };
 
 const update = async (id, { name, quantity }) => {
-  console.log('ta no models');
   const sql = `
     UPDATE 
       products
@@ -42,9 +41,14 @@ const update = async (id, { name, quantity }) => {
   return getById(id);
 };
 
+const exclude = async (id) => {
+  await connection.execute('DELETE FROM products WHERE id = ?;', [id]);
+};
+
 module.exports = {
   getAll,
   getById,
   create,
   update,
+  exclude,
 };
