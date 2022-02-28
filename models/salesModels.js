@@ -30,7 +30,12 @@ const getById = async (id) => {
   return result;
 };
 
+const exclude = async (id) => {
+  await connection.execute('DELETE FROM sales WHERE id = ?;', [id]);
+};
+
 module.exports = {
   getAll,
   getById,
+  exclude,
 };
