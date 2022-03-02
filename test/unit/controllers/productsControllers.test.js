@@ -184,7 +184,7 @@ describe('Controllers', () => {
       });
     });
 
-    describe('#update', () => {
+    /* describe('#update', () => {
       describe('Quando os dados do "id" não forem atualizados', () => {
         const req = {};
         const res = {};
@@ -246,6 +246,6 @@ describe('Controllers', () => {
           expect(res.json.calledWith(productsMock.updated)).to.be.true;
         });
       });
-    });
+    }); */
   })
 });
