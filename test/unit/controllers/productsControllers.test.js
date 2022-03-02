@@ -122,68 +122,6 @@ describe('Controllers', () => {
         });
       });
     });
-    
-    /* describe('#create', () => {
-      describe('Quando criar os dados na tabela', () => {
-        const req = {};
-        const res = {};
-
-        before(() => {
-          const { name, quantity } = productsMock.inserted;
-          req.body = { name, quantity};
-
-          res.status = sinon.stub().returns(res);
-          res.json = sinon.stub();
-
-          sinon.stub(productsServices, 'create').resolves(productsMock.inserted);
-        });
-
-        after(() => {
-          productsServices.create.restore();
-        });
-
-        it('Retorna um status code "201"', async () => {
-          await productsControllers.create(req, res);
-          expect(res.status.calledWith(201)).to.be.true;
-        });
-
-        it('Retorna um json contendo o objeto', async () => {
-          await productsControllers.create(req, res);
-          
-          expect(res.json.calledWith(productsMock.inserted)).to.be.true;
-        });
-    });
-      describe('Quando não criar os dados na tabela', async () => {
-        const req = {};
-        const res = {};
-
-        before(() => {
-          const { name, quantity } = productsMock.inserted;
-          req.body = { name, quantity};
-
-          res.status = sinon.stub().returns(res);
-          res.json = sinon.stub();
-
-          sinon.stub(productsServices, 'create').resolves();
-        });
-
-        after(() => {
-          productsServices.create.restore();
-        });
-
-        it('Retorna um status code "409"', async () => {
-          await productsControllers.create(req, res);
-          expect(res.status.calledWith(409)).to.be.true;
-        });
-        
-        it('Retorna um json contendo a menssagem "Product already exists"', async () => {
-          const message = 'Product already exists';
-          await productsControllers.create(req, res);
-          
-          expect(res.json.calledWith({ message })).to.be.true;
-        });
-      });
-    }); */
 
     describe('#update', () => {
       describe('Quando os dados do "id" não forem atualizados', () => {
@@ -249,7 +187,7 @@ describe('Controllers', () => {
       });
     }); 
 
-    describe.only('#create', () => {
+    describe('#create', () => {
       describe('Quando criar os dados na tabela', () => {
         const req = {};
         const res = {};
