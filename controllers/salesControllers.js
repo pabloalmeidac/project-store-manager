@@ -28,7 +28,14 @@ const getById = async (req, res, next) => {
     }
 };
 
-const create = (_req, _res, _next) => console.log('oi');
+const create = async (req, res, next) => {
+  try {
+    const newSales = await salesServices.create(req.body);
+    return res.status(201).json(newSales);
+  } catch (error) {
+      next(error);
+  }
+};
 
 const update = (_req, _res, _next) => console.log('oi');
 

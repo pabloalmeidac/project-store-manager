@@ -34,7 +34,29 @@ const exclude = async (id) => {
   await connection.execute('DELETE FROM StoreManager.sales WHERE id = ?;', [id]);
 };
 
+// lucas da turma B me ajudou nesse codigo
+const create = async (sales) => {
+  const sqlTableSales = `
+    INSERT INTO StoreManager.sales () VALUES ();`;
+
+  const [sale] = await connection.execute(sqlTableSales);
+
+  const sqlTableSalesProducts = `
+    INSERT INTO 
+      StoreManager.sales_products (sale_id, product_id, quantity)
+    VALUES 
+      (?, ?, ?);`;
+  
+  const salesProducts = sales.map(async ({ productId, quantity }) => {
+    await connection.execute(sqlTableSalesProducts, [sale.insertId, productId, quantity]);
+  });
+
+  await Promise.all(salesProducts);
+  return sale.insertId;
+  };
+
 module.exports = {
+  create,
   getAll,
   getById,
   exclude,

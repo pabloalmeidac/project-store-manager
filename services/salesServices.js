@@ -33,8 +33,20 @@ const exclude = async (id) => {
   return id;
 };
 
+const create = async (sales) => {
+  const saleInsertId = await salesModels.create(sales);
+  const salesById = await getById(saleInsertId);
+
+  const itemsSold = [];
+  salesById.map(({ productId, quantity }) => itemsSold.push({ productId, quantity }));
+  
+  const newSales = { id: saleInsertId, itemsSold };
+  return newSales;
+};
+
 module.exports = {
   getAll,
   getById,
   exclude,
+  create,
 };
