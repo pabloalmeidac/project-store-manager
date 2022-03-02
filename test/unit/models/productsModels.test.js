@@ -93,16 +93,8 @@ describe('Models', () => {
 
           expect(product).to.deep.equal(productsMock.inserted);
       });
-
-      describe('Quando não existir dados na tabela', () => {
-        
-
-        it('Retorna um array de objetos', async () => {
-          
-        });
-      });
     });
-    });
+  });
 
     describe('#update', () => {
       describe('Quando atualizar os dados do "id" na tabela', () => {

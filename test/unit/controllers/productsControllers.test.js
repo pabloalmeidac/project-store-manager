@@ -78,6 +78,7 @@ describe('Controllers', () => {
         after(() => {
           productsServices.getById.restore();
         });
+
         it('Responder um  status "404"', async () => {
           await productsControllers.getById(req, res);
           expect(res.status.calledWith(404)).to.be.true;
@@ -173,6 +174,7 @@ describe('Controllers', () => {
           await productsControllers.create(req, res);
           expect(res.status.calledWith(409)).to.be.true;
         });
+        
         it('Retorna um json contendo a menssagem "Product already exists"', async () => {
           const message = 'Product already exists';
           await productsControllers.create(req, res);
