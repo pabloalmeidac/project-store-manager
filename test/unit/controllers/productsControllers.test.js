@@ -123,7 +123,7 @@ describe('Controllers', () => {
       });
     });
     
-    describe('#create', () => {
+    /* describe('#create', () => {
       describe('Quando criar os dados na tabela', () => {
         const req = {};
         const res = {};
@@ -182,7 +182,7 @@ describe('Controllers', () => {
           expect(res.json.calledWith({ message })).to.be.true;
         });
       });
-    });
+    }); */
 
     /* describe('#update', () => {
       describe('Quando os dados do "id" não forem atualizados', () => {
