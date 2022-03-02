@@ -26,10 +26,11 @@ const getById = async (id) => {
 
 const exclude = async (id) => {
   const sale = await salesModels.getById(id);
- 
+  
   if (sale.length === 0) return sale;
   
-  await salesModels.exclude(id);
+  const p = await salesModels.exclude(id);
+  console.log(p);
   return id;
 };
 
