@@ -1,4 +1,4 @@
-/* const { expect } = require("chai");
+const { expect } = require("chai");
 const sinon = require('sinon');
 const productsControllers = require('../../../controllers/productsControllers');
 const productsServices = require('../../../services/productsServices');
@@ -248,4 +248,4 @@ describe('Controllers', () => {
       });
     });
   })
-}); */
+});
