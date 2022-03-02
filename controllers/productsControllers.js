@@ -1,5 +1,4 @@
 const productsServices = require('../services/productsServices');
-const productsSchema = require('../schemas/productsSchema');
 
 const getAll = async (_req, res, next) => {
   try {
@@ -28,14 +27,7 @@ const getById = async (req, res, next) => {
 
 const create = async (req, res, next) => {
   try {
-    const { error } = productsSchema.isValid(req.body);
     const { name, quantity } = req.body;
-    
-    if (error) {
-      // split error do brabo NASC
-      const [code, message] = error.message.split('|');
-      return res.status(code).json({ message });
-    } 
     
     const newProduct = await productsServices.create({ name, quantity });
     
@@ -49,16 +41,8 @@ const create = async (req, res, next) => {
 
 const update = async (req, res, next) => {
   try {
-    const { error } = productsSchema.isValid(req.body);
-    
     const { id } = req.params;
     const { name, quantity } = req.body;
-    
-    if (error) {
-      // split error do brabo NASC
-      const [code, message] = error.message.split('|');
-      return res.status(code).json({ message });
-    } 
     
     const productUpdated = await productsServices.update(id, { name, quantity });
     

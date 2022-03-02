@@ -1,7 +1,7 @@
 // O Lucas Felipe da turma B me ajudou nesse validate ja que joi me deixou na mão
 const salesSchema = require('../schemas/salesSchema');
 
-const validateSale = (req, res, next) => {
+const validateSales = (req, res, next) => {
   const { body } = req;
   body.map(({ productId, quantity }) => {
     const { error } = salesSchema.isValid({ productId, quantity });
@@ -16,4 +16,4 @@ const validateSale = (req, res, next) => {
   return next();
 };
 
-module.exports = validateSale;
+module.exports = validateSales;
