@@ -18,9 +18,8 @@ const getById = async (req, res, next) => {
     const { id } = req.params;
     
     const product = await productsServices.getById(id);
-  
-    if (product === undefined) res.status(404).json({ message: 'Product not found' });
     
+    if (product === undefined) res.status(404).json({ message: 'Product not found' });
     return res.status(200).json(product);
   } catch (error) {
       next(error);
@@ -51,6 +50,7 @@ const create = async (req, res, next) => {
 const update = async (req, res, next) => {
   try {
     const { error } = productsSchema.isValid(req.body);
+    
     const { id } = req.params;
     const { name, quantity } = req.body;
     
@@ -59,8 +59,9 @@ const update = async (req, res, next) => {
       const [code, message] = error.message.split('|');
       return res.status(code).json({ message });
     } 
+    
     const productUpdated = await productsServices.update(id, { name, quantity });
-  
+    
     if (!productUpdated) res.status(404).json({ message: 'Product not found' });
     
     return res.status(200).json(productUpdated);
