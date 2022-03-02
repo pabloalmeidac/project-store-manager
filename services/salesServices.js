@@ -29,8 +29,8 @@ const exclude = async (id) => {
   
   if (sale.length === 0) return sale;
   
-  const p = await salesModels.exclude(id);
-  console.log(p);
+  await salesModels.exclude(id);
+  
   return id;
 };
 

@@ -34,4 +34,10 @@ module.exports = {
     productId: 1,
     quantity: 2
   }],
+  seachrByIdNotFormated: [{
+    sale_id: 1,
+    date: "2021-09-09T04:54:29.000Z",
+    product_id: 1,
+    quantity: 2
+  }],
 };

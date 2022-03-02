@@ -41,5 +41,41 @@ describe('Services', () => {
         });
       });
     });
+
+    describe('#getById', () => {
+      describe('Quando não existir dados na tabela', () => {
+        before(() => {
+          sinon.stub(salesModels, 'getById').resolves(salesMock.empty[0]);
+        });
+
+        after(() => {
+          salesModels.getById.restore();
+        });
+
+        it('Retorna um array vazio', async () => {
+          const sales = await salesServices.getById(1);
+          expect(sales).to.be.an('array');
+          expect(sales).to.be.empty;
+        });
+      });
+
+      describe('Quando existir dados na tabela', () => {
+        before(() => {
+          sinon.stub(salesModels, 'getById').resolves(salesMock.seachrByIdNotFormated);
+        });
+
+        after(() => {
+          salesModels.getById.restore();
+        });
+  
+        it('Retorna um array de objetos', async () => {
+          const sales = await salesServices.getById(1);
+
+          expect(sales).to.be.an('array');
+          expect(sales).not.to.be.empty;
+          expect(sales).to.be.deep.equal(salesMock.seachrById);
+        });
+      });
+    });
   })
 });
