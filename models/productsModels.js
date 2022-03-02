@@ -31,7 +31,7 @@ const create = async ({ name, quantity }) => {
 const update = async (id, { name, quantity }) => {
   const sql = `
     UPDATE 
-      products
+      StoreManager.products
     SET
       name = ?, quantity = ?
     WHERE 
