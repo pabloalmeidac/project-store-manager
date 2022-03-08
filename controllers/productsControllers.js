@@ -1,4 +1,6 @@
+const productsRouter = require('express').Router();
 const productsServices = require('../services/productsServices');
+const validateProducts = require('../middlewares/validateProducts');
 
 const getAll = async (_req, res, next) => {
   try {
@@ -67,10 +69,17 @@ const exclude = async (req, res, next) => {
   }
 };
 
+productsRouter.get('/', getAll);
+productsRouter.get('/:id', getById);
+productsRouter.post('/', validateProducts, create);
+productsRouter.put('/:id', validateProducts, update);
+productsRouter.delete('/:id', exclude);
+
 module.exports = {
   getAll,
   getById,
   create,
   update,
   exclude,
+  productsRouter,
 };

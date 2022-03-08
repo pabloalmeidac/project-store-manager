@@ -1,4 +1,6 @@
+const salesRouter = require('express').Router();
 const salesServices = require('../services/salesServices');
+const validateSales = require('../middlewares/validateSales');
 
 const getAll = async (_req, res, next) => {
   try {
@@ -37,7 +39,7 @@ const create = async (req, res, next) => {
   }
 };
 
-const update = (_req, _res, _next) => console.log('oi');
+const update = (_req, _res, _next) => 0;
 
 const exclude = async (req, res, next) => {
   try {
@@ -52,10 +54,17 @@ const exclude = async (req, res, next) => {
   }
 };
 
+salesRouter.get('/', getAll);
+salesRouter.get('/:id', getById);
+salesRouter.post('/', validateSales, create);
+salesRouter.put('/:id', validateSales, update);
+salesRouter.delete('/:id', exclude); 
+
 module.exports = {
   getAll,
   getById,
   create,
   exclude,
   update,
+  salesRouter,
 };
