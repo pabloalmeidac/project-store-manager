@@ -14,7 +14,7 @@ Sendo capaz de:
 - Melhorar manutenibilidade e reusabilidade do seu código;
 - Entender e aplicar os padrões REST;
 - Escrever assinaturas para APIs intuitivas e facilmente entendíveis.
-
+- Escrever testes cobrindo 60% da aplicação.
 # Instruções para rodar localmente:
 
 1. Clone o repositório
