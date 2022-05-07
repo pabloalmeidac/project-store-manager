@@ -34,7 +34,6 @@ const exclude = async (id) => {
   await connection.execute('DELETE FROM StoreManager.sales WHERE id = ?;', [id]);
 };
 
-// lucas da turma B me ajudou nesse codigo
 const create = async (sales) => {
   const sqlTableSales = `
     INSERT INTO StoreManager.sales () VALUES ();`;

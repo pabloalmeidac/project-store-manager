@@ -1,18 +1,18 @@
-// O Lucas Felipe da turma B me ajudou nesse validate ja que joi me deixou na mão
 const salesSchema = require('../schemas/salesSchema');
 
 const validateSales = (req, res, next) => {
   const { body } = req;
+  let response = {};
   body.map(({ productId, quantity }) => {
     const { error } = salesSchema.isValid({ productId, quantity });
         
     if (error) {
-      // split error do brabo NASC
       const [code, message] = error.message.split('|');
-      return res.status(code).json({ message });
+      response = { code, message };
     }
-    return 0;
   });
+
+  if(response.message) return res.status(response.code).json({ message: response.message});
   return next();
 };
 
