@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "API de gerenciamento de vendas utilizando arquitetura MSC",
+    "title": "API de gerenciamento de vendas",
     "description": "Ojetivo foi criar um sistema de gerenciamento de vendas utilizando arquitetura MSC",
     "contact": {
       "email": "pabloalmeidacti@gmail.com"
@@ -24,17 +24,6 @@
     "http"
   ],
   "paths": {
-    "/": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/products/": {
       "get": {
         "tags": [
@@ -215,7 +204,7 @@
           "201": {
             "$ref": "#/definitions/responses/OK",
             "schema": {
-              "$ref": "#/definitions/schemas/Sale"
+              "$ref": "#/definitions/schemas/NewSaleResponse"
             }
           },
           "409": {
@@ -357,12 +346,6 @@
           }
         }
       },
-      "UpdateSale": {
-        "type":"array",
-        "items": {
-          "$ref": "#/definitions/schemas/NewSale"
-        }
-      },
       "NewSaleResponse": {
         "type":"object",
         "properties": {
@@ -378,23 +361,8 @@
             }
           }
         }
-      },
-      "UpdateSaleResponse": {
-        "type":"object",
-        "properties": {
-          "saleId": {
-            "type":"number",
-            "example": 1
-          },
-          "itemsUpdated": {
-            "type":"array",
-            "example": {
-              "productId": 1,
-              "quantity": 3
-            }
-          }
-        }
       }
+
     },
     "responses": {
       "OK": {
