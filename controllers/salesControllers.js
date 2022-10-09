@@ -39,8 +39,6 @@ const create = async (req, res, next) => {
   }
 };
 
-const update = (_req, _res, _next) => 0;
-
 const exclude = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -57,7 +55,6 @@ const exclude = async (req, res, next) => {
 salesRouter.get('/', getAll);
 salesRouter.get('/:id', getById);
 salesRouter.post('/', validateSales, create);
-salesRouter.put('/:id', validateSales, update);
 salesRouter.delete('/:id', exclude); 
 
 module.exports = {
@@ -65,6 +62,5 @@ module.exports = {
   getById,
   create,
   exclude,
-  update,
   salesRouter,
 };
