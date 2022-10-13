@@ -15,6 +15,14 @@ Sendo capaz de:
 - Entender e aplicar os padrões REST;
 - Escrever assinaturas para APIs intuitivas e facilmente entendíveis.
 - Escrever testes cobrindo 60% da aplicação.
+
+# Documentação
+Foi utilizado o Swagger para fazer a documentação do projeto.
+
+![doc](https://raw.githubusercontent.com/pabloalmeidac/project-store-manager/pabloalmeidac-sd-015-a-store-manager/doc.png)
+
+![endpoints](https://raw.githubusercontent.com/pabloalmeidac/project-store-manager/pabloalmeidac-sd-015-a-store-manager/endpoints.png)
+
 # Instruções para rodar localmente:
 
 1. Clone o repositório
